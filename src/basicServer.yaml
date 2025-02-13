@@ -1,3 +1,4 @@
+# the OpenAPI spec
 openapi: 3.0.0
 info:
   title: Incidents API
@@ -15,7 +16,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
+                type: array # if it is an array, need to specify what each item is
                 items:
                   type: object
                   properties:
@@ -46,14 +47,14 @@ paths:
           required: true
           schema:
             type: string
-            pattern: ^MA.*
+            pattern: ^MA.* # reg expression
       responses:
         '200':
           description: A specific incident
           content:
             application/json:
               schema:
-                type: object
+                type: object # since it is an object, just specify its properties
                 properties:
                   id:
                     type: string

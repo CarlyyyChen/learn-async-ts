@@ -1,4 +1,13 @@
 - Extract the code in the setTimeout function and replace the setTimeout function  with the extracted code. Then run the main script. 
 - Is there a difference in the flow of execution from when the code was in the setTimeout function?
+Yes. If we only uses the extracted code without the setTimeout function, the codes (adding elements to the sum) are directly executed once sum2DArray is called, 
+instead of being executed in an async manner when the codes are inside the setTimeout function.
 - Is the flow of execution in both these examples different from the flow of execution with the examples using the fetch() API, which also returns a promise? 
+Yes. 
 - If yes, explain the code execution difference. Add your explanation to this file.
+When using the fetch() function, all codes inside it is executed in an async manner. 
+While without setTimeout(), the codes inside sum2DArray() are executed in sync manner. 
+This is because creating a Promise does not automatically make the code inside it asynchronous.
+A Promise itself is just a wrapper around synchronous or asynchronous code.
+The executor function inside new Promise((resolve, reject) => { ... }) runs immediately.
+A Promise is only asynchronous if you introduce an asynchronous operation (like setTimeout() and fetch()).

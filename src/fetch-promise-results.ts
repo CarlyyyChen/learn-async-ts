@@ -10,8 +10,11 @@ interface Product {
 which is resolved when the response is received
 **/
 const fetchPromise2: Promise<Response> = fetch(
-  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
 );
+//fetch promise is resolved once the HTTP response headers are received.
+// However, at this point, the body of the response is not yet available.
+// parding the response body into JSON will also be async
 
 /**
  * The promise is resolved when the response is received
@@ -21,7 +24,7 @@ const fetchPromise2: Promise<Response> = fetch(
  * This is an illustration of callback hell
  */
 fetchPromise2.then((response: Response) => {
-  const jsonPromise = response.json() as Promise<Product[]>;
+  const jsonPromise = response.json() as Promise<Product[]>; // this is also async
   jsonPromise.then((products: Product[]) => {
     products.forEach((product: Product) => {
       console.log(product.name);
@@ -30,4 +33,4 @@ fetchPromise2.then((response: Response) => {
 });
 
 // Logging a message to indicate fetching has started
-console.log('Fetching products ... ');
+console.log("Fetching products ... ");

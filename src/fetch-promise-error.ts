@@ -8,7 +8,7 @@ interface Product {
 
 // Call to fetch() throws an error due to a bad URL
 const fetchPromise3 = fetch(
-  "https://mdn.github.io/learningarea/javascript/apis/fetching-data/can-store/products.json",
+  "https://mdn.github.io/learningarea/javascript/apis/fetching-data/can-store/products.json"
 );
 
 /**
@@ -24,7 +24,7 @@ fetchPromise3
     if (response.ok) {
       return response.json() as Promise<Product[]>;
     }
-    throw new Error(`Bad Response : ${response.status}`)
+    throw new Error(`Bad Response : ${response.status}`);
   })
   .then((products: Product[]) => {
     products.forEach((product: Product) => {
@@ -32,7 +32,9 @@ fetchPromise3
     });
   })
   .catch((error) => {
+    // here's a single catch for both then blocks
+    // can have multiple catch if want to catch different types of errors
     console.error(`Failed to get products: ${error}`);
   });
 
-console.log('Chaining promises ... ');
+console.log("Chaining promises ... ");
